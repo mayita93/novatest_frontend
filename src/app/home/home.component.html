@@ -1,0 +1,134 @@
+<mat-card class="header">
+    <mat-card-content>Novatec</mat-card-content>
+</mat-card>
+
+<mat-card class="content">
+    <form [formGroup]="form">
+
+        <mat-grid-list cols="2" rowHeight="100px">
+            <mat-grid-tile>
+                <mat-form-field class="full-width">
+                    <mat-label>Tipo Identificación</mat-label>
+                    <mat-select formControlName="tipoId">
+                      <mat-option value="1">CC</mat-option>
+                      <mat-option value="2">TI</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile>
+                <mat-form-field class="full-width">
+                    <input matInput type="text" formControlName="numeroId" placeholder="No. Identificación*" (input)="verifyChangesId($event)">
+                </mat-form-field>
+            </mat-grid-tile>
+        </mat-grid-list>
+
+        <mat-card class="content-items">
+            <mat-grid-list cols="2" rowHeight="100px">
+                <mat-grid-tile>
+                    <mat-form-field class="full-width">
+                        <input matInput type="text" formControlName="nombres" placeholder="Nombres*">
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile>
+                    <mat-form-field class="full-width">
+                        <input matInput type="text" formControlName="apellidos" placeholder="Apellidos*">
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile>
+                    <mat-form-field class="full-width">
+                        <mat-label>Rol</mat-label>
+                        <mat-select formControlName="rol">
+                          <mat-option value="1">Estudiante</mat-option>
+                          <mat-option value="2">Profesor</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </mat-grid-tile>
+    
+                <mat-grid-tile>
+                    <mat-form-field class="full-width">
+                        <input matInput type="text" formControlName="correo" placeholder="Correo*">
+                    </mat-form-field>
+                </mat-grid-tile>
+            </mat-grid-list>
+        </mat-card>
+        
+        <button id="btnCreate" mat-raised-button [disabled]="!form.valid" (click)="onSubmit()" >Crear</button>
+        <button id="btnUpdate" mat-raised-button [disabled]="!form.valid" color="primary" (click)="onUpdate()">Actualizar</button>
+        <button id="btnClean" mat-raised-button [disabled]="!form.valid" color="warn" (click)="onClean()">Limpiar</button>
+        
+        <br><br>
+        
+        <div class="row">
+            <div class="col-sm-6">
+                <mat-label><b>Lista Profesores</b></mat-label>
+                <table class="table table-sm table-bordered table-light">
+                    <thead>
+                      <tr class="bg-primary">
+                        <th scope="col">No. Id</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Rol</th>
+                        <th scope="col">Correo</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">1</th>
+                        <td>Test</td>
+                        <td>Rol</td>
+                        <td>test@gmail.com</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">2</th>
+                        <td>Test</td>
+                        <td>Rol</td>
+                        <td>test@gmail.com</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">3</th>
+                        <td>Test</td>
+                        <td>Rol</td>
+                        <td>test@gmail.com</td>
+                      </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-sm-6">
+                <mat-label><b>Lista Profesores</b></mat-label>
+                <table class="table table-sm table-bordered table-light">
+                    <thead>
+                      <tr class="bg-primary">
+                        <th scope="col">No. Id</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Rol</th>
+                        <th scope="col">Correo</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">1</th>
+                        <td>Test</td>
+                        <td>Rol</td>
+                        <td>test@gmail.com</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">2</th>
+                        <td>Test</td>
+                        <td>Rol</td>
+                        <td>test@gmail.com</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">3</th>
+                        <td>Test</td>
+                        <td>Rol</td>
+                        <td>test@gmail.com</td>
+                      </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </form>
+
+</mat-card>
