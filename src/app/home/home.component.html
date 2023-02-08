@@ -9,7 +9,7 @@
             <mat-grid-tile>
                 <mat-form-field class="full-width">
                     <mat-label>Tipo Identificación</mat-label>
-                    <mat-select formControlName="tipoId">
+                    <mat-select formControlName="tipoIdentificacion">
                       <mat-option value="1">CC</mat-option>
                       <mat-option value="2">TI</mat-option>
                     </mat-select>
@@ -18,10 +18,13 @@
 
             <mat-grid-tile>
                 <mat-form-field class="full-width">
-                    <input matInput type="text" formControlName="numeroId" placeholder="No. Identificación*" (input)="verifyChangesId($event)">
+                    <input matInput type="text" formControlName="numeroIdentificacion" placeholder="No. Identificación*" >
                 </mat-form-field>
             </mat-grid-tile>
+
         </mat-grid-list>
+
+        <button class="btn btn-primary" type="button" (click)="searchDocument();">Buscar</button>        
 
         <mat-card class="content-items">
             <mat-grid-list cols="2" rowHeight="100px">
@@ -40,7 +43,7 @@
                 <mat-grid-tile>
                     <mat-form-field class="full-width">
                         <mat-label>Rol</mat-label>
-                        <mat-select formControlName="rol">
+                        <mat-select formControlName="rolId">
                           <mat-option value="1">Estudiante</mat-option>
                           <mat-option value="2">Profesor</mat-option>
                         </mat-select>
@@ -63,70 +66,48 @@
         
         <div class="row">
             <div class="col-sm-6">
-                <mat-label><b>Lista Profesores</b></mat-label>
+                <mat-label><b>Lista Estudiantes</b></mat-label>
                 <table class="table table-sm table-bordered table-light">
                     <thead>
                       <tr class="bg-primary">
                         <th scope="col">No. Id</th>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Rol</th>
+                        <th scope="col">Nombres</th>
+                        <th scope="col">Apellidos</th>
                         <th scope="col">Correo</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>Test</td>
-                        <td>Rol</td>
-                        <td>test@gmail.com</td>
+                      <tr *ngFor="let d of estudiantesList;">
+                        <th scope="row"> {{d.numeroIdentificacion}} </th>
+                        <td> {{d.nombres}} </td>
+                        <td> {{d.apellidos}} </td>
+                        <td> {{d.correo}} </td>
                       </tr>
-                      <tr>
-                        <th scope="row">2</th>
-                        <td>Test</td>
-                        <td>Rol</td>
-                        <td>test@gmail.com</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">3</th>
-                        <td>Test</td>
-                        <td>Rol</td>
-                        <td>test@gmail.com</td>
-                      </tr>
+
                     </tbody>
                 </table>
             </div>
             <div class="col-sm-6">
                 <mat-label><b>Lista Profesores</b></mat-label>
                 <table class="table table-sm table-bordered table-light">
-                    <thead>
-                      <tr class="bg-primary">
-                        <th scope="col">No. Id</th>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Rol</th>
-                        <th scope="col">Correo</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>Test</td>
-                        <td>Rol</td>
-                        <td>test@gmail.com</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">2</th>
-                        <td>Test</td>
-                        <td>Rol</td>
-                        <td>test@gmail.com</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">3</th>
-                        <td>Test</td>
-                        <td>Rol</td>
-                        <td>test@gmail.com</td>
-                      </tr>
-                    </tbody>
-                </table>
+                  <thead>
+                    <tr class="bg-primary">
+                      <th scope="col">No. Id</th>
+                      <th scope="col">Nombres</th>
+                      <th scope="col">Apellidos</th>
+                      <th scope="col">Correo</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let e of profesoresList;">
+                      <th scope="row"> {{e.numeroIdentificacion}} </th>
+                      <td> {{e.nombres}} </td>
+                      <td> {{e.apellidos}} </td>
+                      <td> {{e.correo}} </td>
+                    </tr>
+
+                  </tbody>
+              </table>
             </div>
         </div>
     </form>
